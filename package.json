@@ -25,7 +25,9 @@
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.config.server.js",
     "build:client": "cross-env NODE_ENV=production ykcli build",
     "build": "rimraf dist && ykcli build && npm run build:server",
-    "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build"
+    "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build",
+    "initDataBase": "npx sequelize db:migrate",
+    "migrationGenerate": "npx sequelize migration:generate"
   },
   "browserslist": [
     ">0.2%",
@@ -61,6 +63,7 @@
     "postcss-preset-env": "^6.0.5",
     "postcss-safe-parser": "4.0.1",
     "rimraf": "^2.6.3",
+    "sequelize-cli": "^5.5.1",
     "terser-webpack-plugin": "^1.2.0",
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
