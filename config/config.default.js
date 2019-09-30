@@ -25,5 +25,14 @@ module.exports = {
   errorHandler: {
     match: '/api',
   },
-  middleware: ['loggerHandler']
+  // 请求接口日志输出
+  middleware: ['loggerHandler'],
+  sequelize: {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'react_ssr_todo_list',
+    username: 'root',
+    password: '123456',
+  }
 }
