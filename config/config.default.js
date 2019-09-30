@@ -25,4 +25,5 @@ module.exports = {
   errorHandler: {
     match: '/api',
   },
+  middleware: ['loggerHandler']
 }
