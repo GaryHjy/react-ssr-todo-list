@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, StaticRouter, Route } from 'react-router-dom'
-import defaultLayout from '@/layout'
+import defaultLayout from '@/layout/index'
 import { getWrappedComponent, getComponent } from 'ykfe-utils'
 import { routes as Routes } from '../config/config.ssr'
 
@@ -31,6 +31,7 @@ const clientRender = async () => {
 const serverRender = async (ctx) => {
   // 服务端渲染 根据ctx.path获取请求的具体组件，调用getInitialProps并渲染
   const ActiveComponent = getComponent(Routes, ctx.path)()
+  console.log(ActiveComponent)
   const Layout = ActiveComponent.Layout || defaultLayout
   const serverData = ActiveComponent.getInitialProps ? await ActiveComponent.getInitialProps(ctx) : {}
   ctx.serverData = serverData
