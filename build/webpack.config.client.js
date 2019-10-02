@@ -95,6 +95,43 @@ if (process.env.npm_config_report === 'true') {
   plugins.push(new BundleAnalyzerPlugin())
 }
 
+//  覆盖base配置中的babel-loader，添加了按需混入antd
+let webpackModule = {
+  rules: [
+    {
+      oneOf: [
+        {
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          exclude: /node_modules/,
+          loader: require.resolve('babel-loader'),
+          options: {
+            cacheDirectory: true,
+            cacheCompression: false,
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  'modules': 'false'
+                }
+              ],
+              '@babel/preset-react'
+            ],
+            plugins: [
+              '@babel/plugin-transform-runtime',
+              // 按需引入ant
+              ["import", {
+                "libraryName": "antd",
+                "libraryDirectory": "es",
+                "style": "css" // `style: true` 会加载 less 文件
+              }],
+            ]
+          }
+        },
+      ]
+    }
+  ]
+}
+
 module.exports = merge(baseConfig, {
   devtool: devtool,
   entry: {
@@ -106,6 +143,7 @@ module.exports = merge(baseConfig, {
       'react-router': require.resolve('react-router')
     }
   },
+  module: webpackModule,
   output: {
     path: paths.appBuild,
     pathinfo: true,
