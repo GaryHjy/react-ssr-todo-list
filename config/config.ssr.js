@@ -15,7 +15,14 @@ module.exports = {
       exact: true,
       Component: () => (require('@/page/news').default),
       controller: 'page',
-      handler: 'index'
+      handler: 'index',
+    },
+    {
+      path: '/login',
+      exact: true,
+      Component: () => (require('@/page/login').default),
+      controller: 'page',
+      handler: 'index',
     }
   ],
   baseDir: resolvePath('../'),
