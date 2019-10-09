@@ -43,7 +43,7 @@ class MainLayout extends Component {
           <Layout className="main-layout__content">
             <Header className="main-layout__content--header">Header</Header>
             <Content className="main-layout__content--content">
-              <div style={{ minHeight:'360px', padding: 20,  backgroundColor: '#fff' }}>
+              <div style={{ minHeight:'100%', padding: 20,  backgroundColor: '#fff' }}>
                 {this.props.children}
               </div>
             </Content>
