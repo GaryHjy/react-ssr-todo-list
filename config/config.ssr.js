@@ -23,6 +23,13 @@ module.exports = {
       Component: () => (require('@/page/login').default),
       controller: 'page',
       handler: 'index',
+    },
+    {
+      path: '/register',
+      exact: true,
+      Component: () => (require('@/page/register').default),
+      controller: 'page',
+      handler: 'index',
     }
   ],
   baseDir: resolvePath('../'),
